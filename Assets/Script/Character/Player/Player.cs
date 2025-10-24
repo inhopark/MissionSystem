@@ -15,6 +15,13 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
+
+        // 자식중 CheckCollision 있는지 체크후 Player를 넣어준다.
+        PlayerCheckCollision checkCollision = transform.GetComponentInChildren<PlayerCheckCollision>();
+        if(checkCollision != null)
+        {
+            checkCollision.SetPlayer(this);
+        }
     }
 
     private void Update()
@@ -63,7 +70,10 @@ public class Player : MonoBehaviour
     {
         _animator.Play(animationName);
     }
-    
 
+    public void CheckCollisionTriggerEnter(Collider other)
+    {
+        Debug.LogError("## TEST LOG ## " + other.name);
+    }
 
 }
