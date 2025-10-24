@@ -30,10 +30,7 @@ public class Player : MonoBehaviour
         }
 
         // 초기 Debug 메세지 설정.
-        if(_debugMessageUI != null)
-        {
-            _debugMessageUI.text = _defaultDebugMessage;
-        }
+        InitiailizeDebugMessage();
     }
 
     private void Update()
@@ -83,6 +80,14 @@ public class Player : MonoBehaviour
         _animator.Play(animationName);
     }
 
+    private void InitiailizeDebugMessage()
+    {
+        if(_debugMessageUI != null)
+        {
+            _debugMessageUI.text = _defaultDebugMessage;
+        }
+    }
+
     // NPC 가 컬리전에 충돌 했을 경우 처리.
     public void CheckCollisionTriggerEnter(Collider other)
     {
@@ -99,6 +104,11 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CheckCollisionTriggerExit(Collider other)
+    {
+         InitiailizeDebugMessage();
     }
 
 }

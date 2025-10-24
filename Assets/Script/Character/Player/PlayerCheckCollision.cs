@@ -16,4 +16,12 @@ public class PlayerCheckCollision : MonoBehaviour
             _player.CheckCollisionTriggerEnter(other);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(_player != null)
+        {
+            _player.CheckCollisionTriggerExit(other);
+        }
+    }
 }
