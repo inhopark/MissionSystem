@@ -48,8 +48,9 @@
     <Analyzer Include="D:\Unity\Editor\6000.2.9f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\Character\Player.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Script\Character\NPC.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
