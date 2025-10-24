@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,6 +8,11 @@ public class Player : MonoBehaviour
     private const float _rotationSpeed = 10f; // 회전 속도 조절
     private const float _followSpeed = 5f; // 카메라 추적 속도
     private const float _lookDownAngle = 45f;        // X축 기본 회전 각도
+
+    private const string _defaultDebugMessage = "NPC 근처로 가세요.";
+
+    [SerializeField]
+    private TextMeshProUGUI _debugMessageUI = null;
 
 
     private Vector3 _offset = new Vector3(0f, 9f,-11f); // 카메라 위치 오프셋
@@ -21,6 +27,12 @@ public class Player : MonoBehaviour
         if(checkCollision != null)
         {
             checkCollision.SetPlayer(this);
+        }
+
+        // 초기 Debug 메세지 설정.
+        if(_debugMessageUI != null)
+        {
+            _debugMessageUI.text = _defaultDebugMessage;
         }
     }
 
@@ -71,9 +83,22 @@ public class Player : MonoBehaviour
         _animator.Play(animationName);
     }
 
+    // NPC 가 컬리전에 충돌 했을 경우 처리.
     public void CheckCollisionTriggerEnter(Collider other)
     {
-        Debug.LogError("## TEST LOG ## " + other.name);
+        if(_debugMessageUI != null)
+        {
+            other.transform.TryGetComponent<NPC>(out NPC npcComponent);
+            if(npcComponent != null)
+            {
+                NPCDefine.NPCUnique npcUnique = npcComponent.GetNPCUnique();
+                // Debug 용 UI에 표시.
+                if(_debugMessageUI != null)
+                {
+                    _debugMessageUI.text = string.Format("{0}와 대화가 가능 합니다.", npcUnique.ToString());
+                }
+            }
+        }
     }
 
 }
