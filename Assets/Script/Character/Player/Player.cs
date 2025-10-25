@@ -5,10 +5,6 @@ public class Player : MonoBehaviour
 {
     // const
     private const float _moveSpeed = 5f;  // 이동 속도 설정
-    private const float _rotationSpeed = 10f; // 회전 속도 조절
-    private const float _followSpeed = 5f; // 카메라 추적 속도
-    private const float _lookDownAngle = 45f;        // X축 기본 회전 각도
-
     private const string _defaultDebugMessage = "NPC 근처로 가세요.";
 
     [SerializeField]
@@ -17,6 +13,7 @@ public class Player : MonoBehaviour
 
     private Vector3 _offset = new Vector3(0f, 9f,-11f); // 카메라 위치 오프셋
     private Animator _animator = null;
+    private float mouseX;
 
     private void Start()
     {
@@ -45,7 +42,7 @@ public class Player : MonoBehaviour
         // 애니메이션 상태 변경
         if (move.magnitude > 0f)  // 키를 누르고 있을 때
         {
-            Move(move);
+            HandleMovement(move);
 
             PlayAnimation("Run");
         }
@@ -65,11 +62,10 @@ public class Player : MonoBehaviour
         Camera.main.transform.LookAt(this.transform);
     }
 
-    private void Move(Vector3 targetPosition)
+    private void HandleMovement(Vector3 targetPosition)
     {
         // 이동 방향을 바라보게 회전
-        Quaternion targetRotation = Quaternion.LookRotation(targetPosition);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.LookRotation(targetPosition);
 
         // 실제 이동 처리
         transform.Translate(targetPosition * _moveSpeed * Time.deltaTime, Space.World);

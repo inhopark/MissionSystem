@@ -52,6 +52,7 @@
     <Compile Include="Assets\Script\Character\Player\PlayerCheckCollision.cs" />
     <Compile Include="Assets\Script\Character\NPC\NPC.cs" />
     <Compile Include="Assets\Script\Define\NPCDefine.cs" />
+    <Compile Include="Assets\Script\Define\MissionDefine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
