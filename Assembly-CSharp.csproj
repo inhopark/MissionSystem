@@ -48,11 +48,20 @@
     <Analyzer Include="D:\Unity\Editor\6000.2.9f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Manager\UserManager.cs" />
     <Compile Include="Assets\Script\Character\Player\Player.cs" />
     <Compile Include="Assets\Script\Character\Player\PlayerCheckCollision.cs" />
+    <Compile Include="Assets\Script\UI\BaseUI.cs" />
+    <Compile Include="Assets\Script\Manager\CameraManager.cs" />
     <Compile Include="Assets\Script\Character\NPC\NPC.cs" />
+    <Compile Include="Assets\Script\Scene\StartScene.cs" />
+    <Compile Include="Assets\Script\Define\UIDefine.cs" />
     <Compile Include="Assets\Script\Define\NPCDefine.cs" />
+    <Compile Include="Assets\Script\ScriptableObject\UIInfo.cs" />
+    <Compile Include="Assets\Script\UI\MainUI.cs" />
     <Compile Include="Assets\Script\Define\MissionDefine.cs" />
+    <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\Manager\SingletonMonoBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

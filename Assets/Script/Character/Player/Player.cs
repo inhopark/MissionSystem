@@ -1,15 +1,11 @@
 using TMPro;
 using UnityEngine;
+using static UIDefine;
 
 public class Player : MonoBehaviour
 {
     // const
     private const float _moveSpeed = 5f;  // 이동 속도 설정
-    private const string _defaultDebugMessage = "NPC 근처로 가세요.";
-
-    [SerializeField]
-    private TextMeshProUGUI _debugMessageUI = null;
-
 
     private Vector3 _offset = new Vector3(0f, 9f,-11f); // 카메라 위치 오프셋
     private Animator _animator = null;
@@ -25,9 +21,6 @@ public class Player : MonoBehaviour
         {
             checkCollision.SetPlayer(this);
         }
-
-        // 초기 Debug 메세지 설정.
-        InitiailizeDebugMessage();
     }
 
     private void Update()
@@ -76,35 +69,31 @@ public class Player : MonoBehaviour
         _animator.Play(animationName);
     }
 
-    private void InitiailizeDebugMessage()
-    {
-        if(_debugMessageUI != null)
-        {
-            _debugMessageUI.text = _defaultDebugMessage;
-        }
-    }
-
     // NPC 가 컬리전에 충돌 했을 경우 처리.
     public void CheckCollisionTriggerEnter(Collider other)
     {
-        if(_debugMessageUI != null)
+        other.transform.TryGetComponent<NPC>(out NPC npcComponent);
+        if(npcComponent != null)
         {
-            other.transform.TryGetComponent<NPC>(out NPC npcComponent);
-            if(npcComponent != null)
+            NPCDefine.NPCUnique npcUnique = npcComponent.GetNPCUnique();
+
+            // Main UI 텍스트 세팅.
+            MainUI mainUI = UIManager.Instance.GetUI<MainUI>(UIUnique.MainUI);
+            if(mainUI != null)
             {
-                NPCDefine.NPCUnique npcUnique = npcComponent.GetNPCUnique();
-                // Debug 용 UI에 표시.
-                if(_debugMessageUI != null)
-                {
-                    _debugMessageUI.text = string.Format("{0}와 대화가 가능 합니다.", npcUnique.ToString());
-                }
+                mainUI.SetMainText(string.Format("{0}와 대화가 가능 합니다.", npcUnique.ToString()));
             }
         }
     }
 
     public void CheckCollisionTriggerExit(Collider other)
     {
-         InitiailizeDebugMessage();
+        // Main UI 텍스트 세팅.
+        MainUI mainUI = UIManager.Instance.GetUI<MainUI>(UIUnique.MainUI);
+        if(mainUI != null)
+        {
+            mainUI.SetMainText("NPC 근처로 가세요.");
+        }
     }
 
 }
