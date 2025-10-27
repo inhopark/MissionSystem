@@ -86,7 +86,7 @@ public class BaseMission
     protected virtual void Completed()
     {
         Debug.LogError("## Mission ## Completed ##");
-            }
+    }
 
     protected void ShowNPCDialog()
     {

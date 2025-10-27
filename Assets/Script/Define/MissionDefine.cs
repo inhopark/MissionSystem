@@ -22,11 +22,6 @@ public class MissionDefine
         Fail,
     }
 
-    public class MissionResultData
-    {
-        public MissionResult _result;
-    }
-
     [System.Serializable]
     public class MissionInfoTable
     {
