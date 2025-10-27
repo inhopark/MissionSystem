@@ -72,6 +72,12 @@ public class Player : MonoBehaviour
     // NPC 가 컬리전에 충돌 했을 경우 처리.
     public void CheckCollisionTriggerEnter(Collider other)
     {
+        // 미션 진행중이면 불가.
+        if(MissionManager.Instance.IsRequestMission() == false)
+        {
+            return;
+        }
+
         other.transform.TryGetComponent<NPC>(out NPC npcComponent);
         if(npcComponent != null)
         {
@@ -81,7 +87,8 @@ public class Player : MonoBehaviour
             MainUI mainUI = UIManager.Instance.GetUI<MainUI>(UIUnique.MainUI);
             if(mainUI != null)
             {
-                mainUI.SetMainText(string.Format("{0}와 대화가 가능 합니다.", npcUnique.ToString()));
+                mainUI.SetMissionUnique(npcComponent.GetMissionUnique());
+                mainUI.SetDialogText(string.Format("{0}와 대화가 가능 합니다.", npcUnique.ToString()));
                 mainUI.ShowTalkButton(true);
             }
         }
@@ -89,12 +96,17 @@ public class Player : MonoBehaviour
 
     public void CheckCollisionTriggerExit(Collider other)
     {
-        // Main UI 텍스트 세팅.
+        // 미션 진행중이면 불가.
+        if(MissionManager.Instance.IsRequestMission() == false)
+        {
+            return;
+        }
+
+        // Main UI 초기화.
         MainUI mainUI = UIManager.Instance.GetUI<MainUI>(UIUnique.MainUI);
         if(mainUI != null)
         {
-            mainUI.SetMainText("NPC 근처로 가세요.");
-            mainUI.ShowTalkButton(false);
+            mainUI.Initialize();
         }
     }
 

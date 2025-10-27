@@ -51,16 +51,21 @@
     <Compile Include="Assets\Script\Manager\UserManager.cs" />
     <Compile Include="Assets\Script\Character\Player\Player.cs" />
     <Compile Include="Assets\Script\Character\Player\PlayerCheckCollision.cs" />
+    <Compile Include="Assets\Script\Manager\MissionManager.cs" />
     <Compile Include="Assets\Script\UI\BaseUI.cs" />
     <Compile Include="Assets\Script\Manager\CameraManager.cs" />
+    <Compile Include="Assets\Script\ScriptableObject\MissionInfo.cs" />
     <Compile Include="Assets\Script\Character\NPC\NPC.cs" />
     <Compile Include="Assets\Script\Scene\StartScene.cs" />
+    <Compile Include="Assets\Script\Mission\MissionNPC1.cs" />
     <Compile Include="Assets\Script\Define\UIDefine.cs" />
     <Compile Include="Assets\Script\Define\NPCDefine.cs" />
     <Compile Include="Assets\Script\ScriptableObject\UIInfo.cs" />
     <Compile Include="Assets\Script\UI\MainUI.cs" />
     <Compile Include="Assets\Script\Define\MissionDefine.cs" />
+    <Compile Include="Assets\Script\Mission\BaseMission.cs" />
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\Mission\MissionNPC2.cs" />
     <Compile Include="Assets\Script\Manager\SingletonMonoBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>

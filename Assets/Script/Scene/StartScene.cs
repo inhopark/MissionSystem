@@ -7,5 +7,6 @@ public class StartScene : MonoBehaviour
         UserManager.Instance.Initialize();
         CameraManager.Instance.Initialize();
         UIManager.Instance.Initialize();
+        MissionManager.Instance.Initialize();
     }
 }

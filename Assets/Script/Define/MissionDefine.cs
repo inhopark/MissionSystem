@@ -7,5 +7,31 @@ public class MissionDefine
         Mission_NPC2
     }
 
+    public enum MissionState
+    {
+        None,
+        Ready,
+        InProgress,
+        Completed,
+    }
 
+    public enum MissionResult
+    {
+        None,
+        Success,
+        Fail,
+    }
+
+    public class MissionResultData
+    {
+        public MissionResult _result;
+    }
+
+    [System.Serializable]
+    public class MissionInfoTable
+    {
+        public MissionUnique missionUnique;
+
+        public string dialogText;
+    }
 }
