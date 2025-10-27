@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
             if(mainUI != null)
             {
                 mainUI.SetMainText(string.Format("{0}와 대화가 가능 합니다.", npcUnique.ToString()));
+                mainUI.ShowTalkButton(true);
             }
         }
     }
@@ -93,6 +94,7 @@ public class Player : MonoBehaviour
         if(mainUI != null)
         {
             mainUI.SetMainText("NPC 근처로 가세요.");
+            mainUI.ShowTalkButton(false);
         }
     }
 
