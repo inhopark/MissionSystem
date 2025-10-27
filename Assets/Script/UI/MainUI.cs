@@ -9,7 +9,6 @@ public class MainUI : BaseUI
     private TextMeshProUGUI _mainText = null;
 
     private Button _btnTalk = null;
-
     private Button _btnMissionA = null;
     private Button _btnMissionC = null;
 
@@ -27,44 +26,30 @@ public class MainUI : BaseUI
         _uiUnique = UIUnique.MainUI;
 
         // 메인 텍스트 바인딩.
-        Transform mainTextTrans = transform.Find("MainText");
-        if(mainTextTrans != null)
-        {
-            _mainText = mainTextTrans.GetComponentInChildren<TextMeshProUGUI>();            
-        }
+        _mainText = BindComponent<TextMeshProUGUI>(transform, "MainText");
 
         // 대화하기 버튼 바인딩.
-        Transform btnTalkTrans = transform.Find("BtnTalk");
-        if(btnTalkTrans != null)
+        _btnTalk = BindComponent<Button>(transform, "BtnTalk");
+        if(_btnTalk != null)
         {
-            _btnTalk = btnTalkTrans.GetComponent<Button>();
-            if(_btnTalk != null)
-            {
-                _btnTalk.onClick.AddListener(OnClickTalk);                
-            }
+            _btnTalk.onClick.AddListener(OnClickTalk);                
         }
+
 
         // 미션 수락/거절 UI 바인딩.
         _btnMissionRoot = transform.Find("BtnMissionRoot");
         if(_btnMissionRoot != null)
         {
-            Transform btnMissionATrans = _btnMissionRoot.Find("BtnMissionA");
-            if(btnMissionATrans != null)
+            _btnMissionA = BindComponent<Button>(_btnMissionRoot, "BtnMissionA");
+            if(_btnMissionA != null)
             {
-                _btnMissionA = btnMissionATrans.GetComponent<Button>();
-                if(_btnMissionA != null)
-                {
-                    _btnMissionA.onClick.AddListener(OnClickMissionAgree);                
-                }
+                _btnMissionA.onClick.AddListener(OnClickMissionAgree);                
             }
-            Transform btnMissionCTrans = _btnMissionRoot.Find("BtnMissionC");
-            if(btnMissionCTrans != null)
+  
+            _btnMissionC = BindComponent<Button>(_btnMissionRoot, "BtnMissionC");
+            if(_btnMissionC != null)
             {
-                _btnMissionC = btnMissionCTrans.GetComponent<Button>();
-                if(_btnMissionC != null)
-                {
-                    _btnMissionC.onClick.AddListener(OnClickMissionCancel);                
-                }
+                _btnMissionC.onClick.AddListener(OnClickMissionCancel);                
             }
         }
 
@@ -72,23 +57,15 @@ public class MainUI : BaseUI
         _btnMissionResultRoot = transform.Find("BtnMissionResultRoot");
         if(_btnMissionResultRoot != null)
         {
-            Transform btnMissionSTrans = _btnMissionResultRoot.Find("BtnMissionS");
-            if(btnMissionSTrans != null)
+            _btnMissionS = BindComponent<Button>(_btnMissionResultRoot, "BtnMissionS");
+            if(_btnMissionS != null)
             {
-                _btnMissionS = btnMissionSTrans.GetComponent<Button>();
-                if(_btnMissionS != null)
-                {
-                    _btnMissionS.onClick.AddListener(OnClickMissionSuccess);                
-                }
+                _btnMissionS.onClick.AddListener(OnClickMissionSuccess);                
             }
-            Transform btnMissionFTrans = _btnMissionResultRoot.Find("BtnMissionF");
-            if(btnMissionFTrans != null)
+            _btnMissionF = BindComponent<Button>(_btnMissionResultRoot, "BtnMissionF");
+            if(_btnMissionF != null)
             {
-                _btnMissionF = btnMissionFTrans.GetComponent<Button>();
-                if(_btnMissionF != null)
-                {
-                    _btnMissionF.onClick.AddListener(OnClickMissionFail);                
-                }
+                _btnMissionF.onClick.AddListener(OnClickMissionFail);                
             }
         }
 

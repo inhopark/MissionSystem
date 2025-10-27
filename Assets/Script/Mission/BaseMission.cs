@@ -43,21 +43,24 @@ public class BaseMission
 
     protected virtual void Ready()
     {
+        Debug.LogError("## Mission ## Raady ##");
         ShowNPCDialog();
     }
 
     public virtual void Agree()
     {
+        Debug.LogError("## Mission ## Agree ##");
         SetState(MissionState.InProgress);
     }
 
     public virtual void Cancel()
     {
-        
+        Debug.LogError("## Mission ## Cancel ##");
     }
 
     protected virtual void InProgress()
     {
+        Debug.LogError("## Mission ## InProgress ##");
         if(_mainUI != null)
         {
             _mainUI.SetDialogText(string.Format("미션 진행 중 : {0}", GetMissionUnique()));
@@ -68,20 +71,22 @@ public class BaseMission
 
     public virtual void Success()
     {
+        Debug.LogError("## Mission ## Success ##");
         _missionResult = MissionResult.Success;
         SetState(MissionState.Completed);
     }
 
     public virtual void Fail()
     {
+        Debug.LogError("## Mission ## Fail ##");
         _missionResult = MissionResult.Fail;
         SetState(MissionState.Completed);
     }
 
     protected virtual void Completed()
     {
-        
-    }
+        Debug.LogError("## Mission ## Completed ##");
+            }
 
     protected void ShowNPCDialog()
     {
