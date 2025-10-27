@@ -1,19 +1,21 @@
 using UnityEngine;
+using static NPCDefine;
+using static MissionDefine;
 
 public class NPC : MonoBehaviour
 {
     [SerializeField]
-    private NPCDefine.NPCUnique _npcUnique = NPCDefine.NPCUnique.None;
+    private NPCUnique _npcUnique = NPCUnique.None;
 
     [SerializeField]
-    private MissionDefine.MissionUnique _missionUnique = MissionDefine.MissionUnique.None;
+    private MissionUnique _missionUnique = MissionUnique.None;
 
-    public NPCDefine.NPCUnique GetNPCUnique()
+    public NPCUnique GetNPCUnique()
     {
         return _npcUnique;
     }
 
-    public MissionDefine.MissionUnique GetMissionUnique()
+    public MissionUnique GetMissionUnique()
     {
         return _missionUnique;
     }

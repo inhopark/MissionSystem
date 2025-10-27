@@ -13,7 +13,7 @@ public class PlayerCheckCollision : MonoBehaviour
     {
         if(_player != null)
         {
-            _player.CheckCollisionTriggerEnter(other);
+            _player.OnTriggerEnter_NPC(other);
         }
     }
 
@@ -21,7 +21,7 @@ public class PlayerCheckCollision : MonoBehaviour
     {
         if(_player != null)
         {
-            _player.CheckCollisionTriggerExit(other);
+            _player.OnTriggerExit_NPC(other);
         }
     }
 }

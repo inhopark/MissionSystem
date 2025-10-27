@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using static UIDefine;
 
@@ -6,10 +5,8 @@ public class Player : MonoBehaviour
 {
     // const
     private const float _moveSpeed = 5f;  // 이동 속도 설정
-
     private Vector3 _offset = new Vector3(0f, 9f,-11f); // 카메라 위치 오프셋
     private Animator _animator = null;
-    private float mouseX;
 
     private void Start()
     {
@@ -70,7 +67,7 @@ public class Player : MonoBehaviour
     }
 
     // NPC 가 컬리전에 충돌 했을 경우 처리.
-    public void CheckCollisionTriggerEnter(Collider other)
+    public void OnTriggerEnter_NPC(Collider other)
     {
         // 미션 진행중이면 불가.
         if(MissionManager.Instance.IsRequestMission() == false)
@@ -94,7 +91,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void CheckCollisionTriggerExit(Collider other)
+    public void OnTriggerExit_NPC(Collider other)
     {
         // 미션 진행중이면 불가.
         if(MissionManager.Instance.IsRequestMission() == false)
