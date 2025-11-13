@@ -11,13 +11,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
-
-        // 자식중 CheckCollision 있는지 체크후 Player를 넣어준다.
-        PlayerCheckCollision checkCollision = transform.GetComponentInChildren<PlayerCheckCollision>();
-        if(checkCollision != null)
-        {
-            checkCollision.SetPlayer(this);
-        }
     }
 
     private void Update()
@@ -67,7 +60,7 @@ public class Player : MonoBehaviour
     }
 
     // NPC 가 컬리전에 충돌 했을 경우 처리.
-    public void OnTriggerEnter_NPC(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         // 미션 진행중이면 불가.
         if(MissionManager.Instance.IsRequestMission() == false)
@@ -91,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit_NPC(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         // 미션 진행중이면 불가.
         if(MissionManager.Instance.IsRequestMission() == false)
